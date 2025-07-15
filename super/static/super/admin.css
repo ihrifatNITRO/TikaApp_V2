@@ -1,0 +1,125 @@
+/* super/static/super/admin.css */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-image: linear-gradient(to top, #a8d7ed 0%, #c5e592 100%);
+    min-height: 100vh;
+    margin: 0;
+    padding: 2rem;
+}
+
+.main-wrapper {
+    display: flex;
+    align-items: flex-start;
+    gap: 2rem;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* --- Column 1 Styles --- */
+.profile-container {
+    flex: 0 0 450px;
+}
+
+.profile-card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.profile-header {
+    background-color: #343a40;
+    color: white;
+    padding: 20px 25px;
+}
+
+.profile-header h2 {
+    margin: 0;
+    font-size: 22px;
+    word-break: break-all;
+}
+
+.profile-body {
+    padding: 25px;
+}
+
+.detail-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.detail-row:last-child {
+    border-bottom: none;
+}
+
+.detail-label {
+    font-weight: 600;
+    color: #555;
+}
+
+.detail-value {
+    color: #333;
+}
+
+.badge {
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    color: white;
+    font-weight: 500;
+}
+
+.badge.active {
+    background-color: #28a745;
+}
+
+.badge.inactive {
+    background-color: #dc3545;
+}
+
+.button-group {
+    margin-top: 20px;
+}
+
+.btn-action {
+    display: block;
+    width: 100%;
+    padding: 12px 20px;
+    text-align: center;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 500;
+    transition: opacity 0.3s ease;
+    box-sizing: border-box;
+}
+
+.btn-action:hover {
+    opacity: 0.9;
+}
+
+.btn-action.add {
+    background-color: #28a745;
+    /* Green */
+    margin-bottom: 10px;
+}
+
+.btn-action.delete {
+    background-color: #dc3545;
+    /* Red */
+}
+
+/* --- Column 2 Styles --- */
+.children-container {
+    flex-grow: 1;
+}
+
+.children-container h4 {
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
