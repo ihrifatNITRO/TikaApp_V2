@@ -11,7 +11,9 @@
 
 <p>The superuser (admin) has a dedicated dashboard to view all registered users, manage their profiles, add and update children's vaccination records, and delete users.</p>
 
-Table of Contents
+<hr>
+
+<h2>Table of Contents</h2>
 <ol>
 <li><a href="#features">Features</a></li>
 <li><a href="#project-structure">Project Structure</a></li>
@@ -20,7 +22,9 @@ Table of Contents
 <li><a href="#future-improvements">Future Improvements</a></li>
 </ol>
 
-<a id="features"></a>Features
+<hr>
+
+<h2 id="features">Features</h2>
 <ul>
 <li><strong>User Registration:</strong> Secure user registration with required email verification. New accounts are inactive until the user clicks a unique link sent to their email.</li>
 <li><strong>Unique Field Validation:</strong> Prevents duplicate registrations based on email, ID card number, and phone number.</li>
@@ -54,7 +58,9 @@ Table of Contents
 </li>
 </ul>
 
-<a id="project-structure"></a>Project Structure
+<hr>
+
+<h2 id="project-structure">Project Structure</h2>
 <p>The project is organized into several Django apps, each with a specific responsibility:</p>
 <ul>
 <li><strong><code>homepage</code></strong>: Displays the public-facing landing page.</li>
@@ -64,17 +70,19 @@ Table of Contents
 <li><strong><code>super</code></strong>: Contains all logic and templates for the superuser admin dashboard, including user management and child record administration.</li>
 </ul>
 
-<a id="setup-and-installation"></a>Setup and Installation
+<hr>
+
+<h2 id="setup-and-installation">Setup and Installation</h2>
 <p>Follow these steps to set up and run the project locally.</p>
 
-Prerequisites
+<h3>Prerequisites</h3>
 <ul>
 <li><a href="https://www.python.org/downloads/">Python 3.8+</a></li>
 <li><code>pip</code> (Python package installer)</li>
 <li><a href="https://redis.io/docs/getting-started/installation/">Redis</a> (for Celery message broker)</li>
 </ul>
 
-Installation Steps
+<h3>Installation Steps</h3>
 <ol>
 <li><strong>Clone the repository:</strong>
 <pre><code>git clone https://github.com/your-username/TikaApp.git
@@ -110,15 +118,16 @@ redis</code></pre>
 </li>
 </ol>
 
-<a id="running-the-application"></a>Running the Application
+<hr>
+
+<h2 id="running-the-application">Running the Application</h2>
 <p>This project uses Celery for background tasks, which requires running multiple processes simultaneously. You will need to open <strong>three separate terminals</strong>.</p>
 
-Terminal 1: Start the Django Server
+<h3>Terminal 1: Start the Django Server</h3>
 <pre><code>python manage.py runserver</code></pre>
-
 <p>Your website will be available at <code>http://127.0.0.1:8000/</code>.</p>
 
-Terminal 2: Start the Celery Worker
+<h3>Terminal 2: Start the Celery Worker</h3>
 <p>This process listens for and executes background tasks, like sending emails. The <code>-P eventlet</code> flag is necessary for running on Windows.</p>
 <pre><code># For Windows
 celery -A TikaApp worker -l info -P eventlet
@@ -126,12 +135,14 @@ celery -A TikaApp worker -l info -P eventlet
 For macOS/Linux
 celery -A TikaApp worker -l info</code></pre>
 
-Terminal 3: Start the Celery Beat Scheduler
+<h3>Terminal 3: Start the Celery Beat Scheduler</h3>
 <p>This process triggers the scheduled tasks at their specified time (e.g., checking for vaccine reminders every day).</p>
 <pre><code>celery -A TikaApp beat -l info</code></pre>
 <p>With all three terminals running, the application will be fully functional, including the automated email reminders.</p>
 
-<a id="future-improvements"></a>Future Improvements
+<hr>
+
+<h2 id="future-improvements">Future Improvements</h2>
 <ul>
 <li><strong>User-Facing Dashboard:</strong> A dashboard for regular, logged-in users to view and manage their own children's records.</li>
 <li><strong>User Profile Editing:</strong> Allow users to update their own profile information (name, password, etc.).</li>
