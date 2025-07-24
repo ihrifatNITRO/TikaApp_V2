@@ -3,8 +3,8 @@
 <p align="center">
 <img src="https://img.shields.io/badge/Django-4.2-blue.svg" alt="Django Version">
 <img src="https://img.shields.io/badge/Python-3.11-blue.svg" alt="Python Version">
-<img src="https://img.shields.io/badge/Celery-5.4-brightgreen.svg" alt="Celery">
-<img src="https://img.shields.io/badge/Redis-5.0-red.svg" alt="Redis">
+<img src="https://img.shields.io/badge/Celery-5.5-brightgreen.svg" alt="Celery">
+<img src="https://img.shields.io/badge/Redis-6.2-red.svg" alt="Redis">
 </p>
 
 TikaApp is a full-stack web application built with Django, designed to help manage and track vaccination records for children. It provides a robust system for user registration, separate, fully-featured dashboards for parents and administrators, and an automated email reminder system for upcoming vaccine appointments.
