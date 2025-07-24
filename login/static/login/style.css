@@ -3,14 +3,16 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: #f7faff;
-    /* A very light blue-gray background */
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
     margin: 0;
+    padding: 1rem;
+    /* Added padding for smaller screens */
+    min-height: 100vh;
+    /* Changed from height to min-height */
     background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%);
+    box-sizing: border-box;
 }
 
 .login-wrapper {
@@ -42,17 +44,20 @@ body {
     color: #555;
 }
 
-.form-control {
+/* Targets the input fields rendered by Django */
+input[type="email"],
+input[type="password"] {
     width: 100%;
     padding: 12px 15px;
     border: 1px solid #ddd;
     border-radius: 5px;
     box-sizing: border-box;
-    /* Ensures padding doesn't affect width */
     font-size: 16px;
+    font-family: 'Poppins', sans-serif;
 }
 
-.form-control:focus {
+input[type="email"]:focus,
+input[type="password"]:focus {
     outline: none;
     border-color: #1abc9c;
     /* Teal focus color */
@@ -100,4 +105,13 @@ body {
     color: #721c24;
     background-color: #f8d7da;
     border-color: #f5c6cb;
+}
+
+
+/* --- RESPONSIVE STYLES FOR VERY SMALL SCREENS --- */
+@media (max-width: 480px) {
+    .login-wrapper {
+        /* Reduce padding on very small screens */
+        padding: 25px;
+    }
 }

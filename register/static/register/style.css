@@ -5,6 +5,8 @@ body {
     align-items: center;
     padding: 2rem;
     background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%);
+    /* Ensures background covers the full page height */
+    min-height: 100vh;
 }
 
 .form-container {
@@ -12,26 +14,18 @@ body {
     padding: 2.5rem;
     border-radius: 1rem;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    /* Ensures it doesn't overflow its container */
     max-width: 800px;
 }
 
 .form-container h1 {
     font-weight: bold;
     border-bottom: 4px solid #8A2BE2;
-    /* A purple color */
     padding-bottom: 0.5rem;
     margin-bottom: 1.5rem;
     display: inline-block;
 }
-
-/* .btn-register {
-    background-image: linear-gradient(to right, #8e2de2, #4a00e0);
-    color: white;
-    font-weight: bold;
-    border: none;
-    width: 100%;
-    padding: 0.75rem;
-} */
 
 .btn-register {
     width: 100%;
@@ -39,7 +33,6 @@ body {
     border: none;
     border-radius: 5px;
     background-color: #1abc9c;
-    /* Teal button color */
     color: white;
     font-size: 16px;
     font-weight: 500;
@@ -50,5 +43,23 @@ body {
 
 .btn-register:hover {
     background-color: #16a085;
-    /* A darker teal for hover */
+}
+
+/* --- RESPONSIVE STYLES FOR SMALLER SCREENS --- */
+@media (max-width: 768px) {
+    body {
+        /* Remove alignment to prevent issues on small screens, adjust padding */
+        display: block;
+        padding: 1rem;
+    }
+
+    .form-container {
+        /* Reduce padding on smaller screens */
+        padding: 1.5rem;
+    }
+
+    .form-container h1 {
+        /* Reduce heading size on mobile */
+        font-size: 1.75rem;
+    }
 }

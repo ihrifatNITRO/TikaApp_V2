@@ -10,7 +10,9 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
+import os
 from pathlib import Path
+from celery.schedules import crontab
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -120,6 +122,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = 'static/'
+# # This tells Django to look for a 'static' folder in your project's main directory
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, 'static'),
+# ]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
@@ -130,3 +136,20 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 LOGIN_URL = 'login'
+
+
+# CELERY SETTINGS
+CELERY_BROKER_URL = 'redis://localhost:6379/0'
+CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
+
+# CELERY BEAT SCHEDULE
+CELERY_BEAT_SCHEDULE = {
+    'send-vaccine-reminders-every-day': {
+        'task': 'super.tasks.send_vaccine_reminders',
+        # This runs the task every day at 7 AM
+        'schedule': crontab(minute='*'),
+    },
+}
+
+# .\zenv\Scripts\celery.exe -A TikaApp worker -l info -P eventlet
+# .\zenv\Scripts\celery.exe -A TikaApp beat -l info

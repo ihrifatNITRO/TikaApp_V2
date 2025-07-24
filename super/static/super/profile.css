@@ -9,6 +9,10 @@ body {
     padding: 2rem;
 }
 
+.content-wrapper {
+    padding: 2rem;
+}
+
 .main-wrapper {
     display: flex;
     align-items: flex-start;
@@ -105,13 +109,11 @@ body {
 
 .btn-action.add {
     background-color: #28a745;
-    /* Green */
     margin-bottom: 10px;
 }
 
 .btn-action.delete {
     background-color: #dc3545;
-    /* Red */
 }
 
 /* --- Column 2 Styles --- */
@@ -122,4 +124,18 @@ body {
 .children-container h4 {
     font-weight: 600;
     margin-bottom: 1rem;
+}
+
+/* --- RESPONSIVE STYLES --- */
+@media (max-width: 992px) {
+    .main-wrapper {
+        /* Stack columns vertically on tablets and smaller */
+        flex-direction: column;
+    }
+
+    .profile-container {
+        /* Allow the profile container to take full width */
+        flex: 1 1 auto;
+        width: 100%;
+    }
 }

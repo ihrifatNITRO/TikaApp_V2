@@ -1,0 +1,118 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f7f6;
+    /* A very light, clean gray */
+    color: #333;
+}
+
+.main-container {
+    display: grid;
+    /* On large screens, use a two-column layout */
+    grid-template-columns: 1fr 2fr;
+    /* 1 part for profile, 2 parts for children */
+    gap: 2rem;
+    padding: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* General card styling */
+.card-custom {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.07);
+    padding: 2rem;
+}
+
+/* Profile Card Styles */
+.profile-card h3 {
+    font-weight: 600;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.profile-details li {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #f0f0f0;
+    flex-wrap: wrap;
+    /* Allows wrapping on small screens */
+}
+
+.profile-details li:last-child {
+    border-bottom: none;
+}
+
+.profile-details .label {
+    font-weight: 500;
+    color: #555;
+}
+
+/* Children Information Styles */
+.children-section h3 {
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+}
+
+.child-card {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.07);
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+    /* To keep the header's corners rounded */
+}
+
+.child-card-header {
+    background-color: #343a40;
+    color: white;
+    padding: 1rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.child-card-header h5 {
+    margin: 0;
+    font-weight: 600;
+}
+
+.child-card-body {
+    padding: 1.5rem;
+}
+
+.child-card-body ul {
+    list-style: none;
+    padding: 0;
+}
+
+.child-card-body li {
+    padding: 0.5rem 0;
+}
+
+.child-card-body .label {
+    font-weight: 500;
+}
+
+/* --- RESPONSIVE DESIGN --- */
+/* This media query applies styles for screens 992px wide or smaller (tablets and phones) */
+@media (max-width: 992px) {
+    .main-container {
+        /* Change to a single-column layout */
+        grid-template-columns: 1fr;
+    }
+}
+
+/* On very small screens, reduce padding */
+@media (max-width: 576px) {
+    .main-container {
+        padding: 1rem;
+    }
+
+    .card-custom {
+        padding: 1.5rem;
+    }
+}

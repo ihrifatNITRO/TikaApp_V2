@@ -1,5 +1,7 @@
 body {
     background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%);
+    /* This ensures the gradient always fills the screen, even if content is short */
+    min-height: 100vh;
 }
 
 button {
@@ -14,13 +16,11 @@ button {
     padding: 0;
     font-size: inherit;
     font-family: inherit;
-
 }
 
 button.learn-more {
     width: 12rem;
     height: auto;
-
 }
 
 button.learn-more .circle {
@@ -109,7 +109,6 @@ button:hover .button-text {
     background-image: linear-gradient(to right, #eea2a2 0%, #bbc1bf 19%, #57c6e1 42%, #b49fda 79%, #7ac5d8 100%);
 }
 
-
 .lastComponent {
     position: relative;
     background-color: black;
@@ -125,10 +124,8 @@ button:hover .button-text {
     margin-right: 200px;
 }
 
-
 .carousel-image-container {
     aspect-ratio: 5 / 3.5;
-    /* Or 4/3, 1/1 for square, etc. */
     width: 100%;
 }
 
@@ -136,5 +133,23 @@ button:hover .button-text {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    /* This crops the image to fit without distortion */
+}
+
+/* --- RESPONSIVE STYLES FOR SMALLER SCREENS --- */
+@media (max-width: 768px) {
+    .webname {
+        /* Reduce font size on smaller screens */
+        font-size: 28px;
+    }
+
+    .inspiration-pre {
+        /* Remove the large margin that causes horizontal scrolling */
+        margin-right: 0;
+    }
+
+    .lastComponent {
+        /* Adjust margins for smaller screens */
+        margin-left: 5px;
+        margin-right: 5px;
+    }
 }
