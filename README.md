@@ -3,8 +3,9 @@
 <p align="center">
 <img src="https://img.shields.io/badge/Django-4.2-blue.svg" alt="Django Version">
 <img src="https://img.shields.io/badge/Python-3.11-blue.svg" alt="Python Version">
-<img src="https://img.shields.io/badge/Celery-5.5-brightgreen.svg" alt="Celery">
-<img src="https://img.shields.io/badge/Redis-6.2-red.svg" alt="Redis">
+<img src="https://img.shields.io/badge/Bootstrap-5.3-purple.svg" alt="Bootstrap">
+<img src="https://img.shields.io/badge/Celery-5.4-brightgreen.svg" alt="Celery">
+<img src="https://img.shields.io/badge/Redis-5.0-red.svg" alt="Redis">
 </p>
 
 TikaApp is a full-stack web application built with Django, designed to help manage and track vaccination records for children. It provides a robust system for user registration, separate, fully-featured dashboards for parents and administrators, and an automated email reminder system for upcoming vaccine appointments.
@@ -62,14 +63,77 @@ The superuser (admin) has a dedicated, secure dashboard to view all registered u
 
 <h2 id="project-structure">🏗️ Project Structure</h2>
 
-<p>The project is organized into several Django apps, each with a specific responsibility:</p>
+<h3>File Organization</h3>
+
+<p>The project adheres to Django's standard directory structure. Here's an overview of key files and directories:</p>
+
+<pre><code>TikaApp/
+├── manage.py
+├── requirements.txt
+├── README.md
+├── TikaApp/
+│   ├── settings.py
+│   ├── urls.py
+│   └── celery.py
+├── homepage/
+│   ├── static/
+│   │    └── homepage/
+│   │        └── style.css
+│   └── templates/
+│        └── homepage/
+│            └── homepage.html
+├── register/
+│   ├── templates/
+│   │    └── register/
+│   │        ├── register.html
+│   │        ├── verification_email.html
+│   │        ├── verification_failed.html
+│   │        ├── verification_sent.html
+│   │        └── verification_success.html
+│   └── static/
+│        └── register/
+│            └── style.css
+├── login/
+│   ├── templates/
+│   │    └── login/
+│   │        └── login.html
+│   └── static/
+│        └── login/
+│            └── style.css
+├── dashboard/
+│   ├── templates/
+│   │     └── dashboard/
+│   │         └── dashboard.html
+│   └── static/
+│        └── dashboard/
+│            └── style.css
+└── super/
+│    ├── templates/
+│    │    └── super/
+│    │        ├── super_dashboard.html
+│    │        ├── super_login.html
+│    │        └── user_profile.html
+│    └── static/
+│         └── super/
+│             ├── dashboard.css
+│             ├── login.css
+│             └── profile.css
+</code></pre>
+
+<h3>Module Breakdown</h3>
+
 <ul>
-<li><strong><code>homepage</code></strong>: Displays the public-facing, responsive landing page.</li>
-<li><strong><code>register</code></strong>: Handles the new user registration process, form validation, and email verification.</li>
-<li><strong><code>login</code></strong>: Manages the login/logout functionality for regular (non-super) users.</li>
-<li><strong><code>dashboard</code></strong>: Provides the personal, responsive dashboard for logged-in parents.</li>
-<li><strong><code>super</code></strong>: Contains all logic and templates for the superuser admin dashboard, including the admin login, user management, and child record administration.</li>
+<li><strong><code>homepage</code></strong>: Manages the public landing page, including static assets like logos and images.</li>
+<li><strong><code>register</code></strong>: Handles user sign-up, form validation (e.g., unique email/ID/phone), and email verification workflows using Django forms and signals.</li>
+<li><strong><code>login</code></strong>: Provides authentication for regular users, with custom views and templates for login/logout.</li>
+<li><strong><code>dashboard</code></strong>: Delivers the user-specific dashboard, querying user profiles and child records via models to display vaccination status.</li>
+<li><strong><code>super</code></strong>: Implements admin functionalities, including separate login, user/search/profile management, child CRUD operations, and Celery tasks for reminders.</li>
+<li><strong><code>TikaApp</code></strong>: Core project settings, URL routing, ASGI/WSGI configuration, and Celery setup.</li>
 </ul>
+
+<h3>Component Interactions</h3>
+
+<p>Requests enter via <code>TikaApp/urls.py</code>, which routes to app-specific <code>urls.py</code> files. Views in each app interact with Models (e.g., User, Profile, Child) using Django ORM for CRUD. Views pass data to Templates for rendering HTML/CSS/JS. For admin actions, super/views.py handles forms and queries, triggering Celery tasks in super/tasks.py for emails, scheduled by Celery Beat. Static files are served from app-specific directories, ensuring organized asset management.</p>
 
 <h2 id="setup-and-installation">🚀 Setup and Installation</h2>
 
